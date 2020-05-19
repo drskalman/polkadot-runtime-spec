@@ -15,6 +15,7 @@
 \newcommand{\SubItem}[1]{
     {\setlength\itemindent{15pt} \item[-] #1}
 }
+\newcommandx{\syed}[2]{{#1}{}}
 
 \begin{document}
 \title{Polkadot Weights}
@@ -23,6 +24,8 @@
 \maketitle
 
 \section{Motivation}
+\syed{}{this could be expanded into a nice intro with in a way that the problem and solution become clearer, discussing alternative, ...}
+
 Polkadot has a limited time window for block producers to create a block,
 including limitations on block size which can make the selection and execution
 of certain extrinsics too expensive and decelerate the network. The weight
@@ -32,12 +35,17 @@ can select a set of extrinsics and saturate the block to it's fullest potential
 without exceeding any limitations (as described in section \ref{sec:limitations}).
 \newline
 
+\syed{}{block ration is a part of the problem so it is better to come before introducing the weight solution}
 Polkadot also introduces a specified block ratio (as defined in section \ref{sec:limitations}),
 ensuring that only a certain portion of the total block size gets used for regular extrinsics.
 The remaining space is reserved for critical, operational extrinsics required for the functionality
 by Polkadot itself.
 
+\syed{}{it is good to describe the document structure here or somewhere, section 1 blah section2 bloh}
+
 \section{Fundamentals}
+\syed{}{some intro about this section}
+
 Weights are just a numeric value and Runtime functions may use complex structures to express those
 values. Therefore, the following requirements must apply for implementing weight calculations:
 \begin{itemize}
@@ -84,11 +92,10 @@ for each transaction at about 1'500'000.
 Do note that the smallest, non-zero weight in Polkadot is set at 10'000.
 
 \section{Weight Assignment}
-Assigning weights based on theoretical performance such as big O notation proves to be
-unreliable and too complex due to imprecision in back-end systems, internal communication
-within the Runtime and design choices in the software. Therefore, all available Runtime 
-functions, which create and execute extrinsics, have to be benchmarked with a large
-collection of input parameters.
+Assigning weights based on theoretical performance such as big O notation proves to be a complex task
+which at the same time does not provide sufficient granuality in the practical setting partially due to imprecision in back-end systems, internal communication within the Runtime and design choices in the software. 
+
+In absence of a reliable theoretical framework for weight assignement, we benchmark the resource consumption of all available Runtime functions, which create and execute extrinsics. This is done through executing these function over a large collection of input parameters.
 
 \subsection{Parameters}
 The inputs parameters highly vary depending on the Runtime function and must therefore
