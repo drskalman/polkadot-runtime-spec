@@ -7,15 +7,20 @@
     top=20mm,
 }
 \usepackage{color}
+
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage[ruled,vlined]{algorithm2e}
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+\usepackage{xcolor}  % Coloured text etc.
+
 \setlength\parindent{0pt}
 \newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
 \newcommand{\SubItem}[1]{
     {\setlength\itemindent{15pt} \item[-] #1}
 }
-\newcommandx{\syed}[2]{{#1}{}}
+\newcommandx{\syed}[2]{{\uline{#1}}\textcolor{orange}{(#2)}}
+
 
 \begin{document}
 \title{Polkadot Weights}
